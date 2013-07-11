@@ -1,4 +1,4 @@
-package rmsd
+package structure
 
 import (
 	"fmt"

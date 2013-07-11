@@ -1,4 +1,4 @@
-package rmsd
+package structure
 
 // This is a direct translation from the QCProt code.
 // I've done this because cgo doesn't work well with high frequency calls
