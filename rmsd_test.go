@@ -6,8 +6,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/TuftsBCB/io/pdb"
-
 	matrix "github.com/skelterjohn/go.matrix"
 )
 
@@ -18,7 +16,7 @@ func init() {
 func ExampleRmsd() {
 	// If you add a test, make sure you add a corresponding "RMSD: ..."
 	// to the output test at the end of this function.
-	tests := [][2][]pdb.Coords{
+	tests := [][2][]Coords{
 		{
 			{
 				atom(-2.803, -15.373, 24.556),
@@ -226,21 +224,21 @@ func randomMatrix(rows, cols int) (m []float64) {
 	return
 }
 
-func randomAtoms(cnt int) []pdb.Coords {
-	atoms := make([]pdb.Coords, cnt)
+func randomAtoms(cnt int) []Coords {
+	atoms := make([]Coords, cnt)
 	for i := 0; i < cnt; i++ {
 		atoms[i] = randomAtom()
 	}
 	return atoms
 }
 
-func randomAtom() pdb.Coords {
+func randomAtom() Coords {
 	return atom(
 		rand.Float64()*float64(rand.Intn(500)),
 		rand.Float64()*float64(rand.Intn(500)),
 		rand.Float64()*float64(rand.Intn(500)))
 }
 
-func atom(x, y, z float64) pdb.Coords {
-	return pdb.Coords{x, y, z}
+func atom(x, y, z float64) Coords {
+	return Coords{x, y, z}
 }

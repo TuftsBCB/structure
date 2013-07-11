@@ -477,3 +477,17 @@ func (A matrix3) svd() (matrix3, matrix3) {
 
 	return U, V
 }
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func maxf(a, b float64) float64 {
+	if a > b {
+		return a
+	}
+	return b
+}

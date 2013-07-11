@@ -3,8 +3,6 @@ package structure
 import (
 	"fmt"
 	"math"
-
-	"github.com/TuftsBCB/io/pdb"
 )
 
 // RMSD implements a version of the Kabsch alogrithm that is described here:
@@ -30,7 +28,7 @@ import (
 // Note that RMSD will panic if the lengths of struct1 and struct2 differ.
 // RMSD will also panic if the calculation of the SVD returns an error. (It's
 // possible that will change, though.)
-func rmsd(struct1, struct2 []pdb.Coords) float64 {
+func rmsd(struct1, struct2 []Coords) float64 {
 	if len(struct1) != len(struct2) {
 		panic(fmt.Sprintf("Computing the RMSD of two structures require that "+
 			"they have equal length. But the lengths of the two structures "+
@@ -102,7 +100,7 @@ func rmsd(struct1, struct2 []pdb.Coords) float64 {
 }
 
 // centroid calculates the average position of a set of atoms.
-func centroid(atoms []pdb.Coords) (float64, float64, float64) {
+func centroid(atoms []Coords) (float64, float64, float64) {
 	var xs, ys, zs float64
 	for _, atom := range atoms {
 		xs += atom.X

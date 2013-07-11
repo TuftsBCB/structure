@@ -106,9 +106,15 @@ package structure
 import (
 	"fmt"
 	"math"
-
-	"github.com/TuftsBCB/io/pdb"
 )
+
+type Coords struct {
+	X, Y, Z float64
+}
+
+func (coords Coords) String() string {
+	return fmt.Sprintf("%0.3f %0.3f %0.3f", coords.X, coords.Y, coords.Z)
+}
 
 type Memory struct {
 	coords1, coords2 [3][]float64
@@ -123,11 +129,11 @@ func NewMemory(cols int) Memory {
 	return mem
 }
 
-func RMSD(struct1, struct2 []pdb.Coords) float64 {
+func RMSD(struct1, struct2 []Coords) float64 {
 	return RMSDMem(NewMemory(len(struct1)), struct1, struct2)
 }
 
-func RMSDMem(mem Memory, struct1, struct2 []pdb.Coords) float64 {
+func RMSDMem(mem Memory, struct1, struct2 []Coords) float64 {
 	if len(struct1) != len(struct2) {
 		panic(fmt.Sprintf("Computing the RMSD of two structures require that "+
 			"they have equal length. But the lengths of the two structures "+
